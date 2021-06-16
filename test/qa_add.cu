@@ -24,6 +24,7 @@ void run_test(int N, int num_inputs)
     cudaMemcpy(dev_input_data, host_input_data.data(),
                N * sizeof(T), cudaMemcpyHostToDevice);
   
+    int ncopies = N * sizeof(std::complex<float>) / sizeof(T);
     cusp::add<T> op(num_inputs);
     int minGrid, blockSize, gridSize;
     op.occupancy(&blockSize, &minGrid);
