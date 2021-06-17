@@ -44,3 +44,11 @@ e = executable('qa_add',
     dependencies: [cusp_dep, gtest_dep], 
     install : true)
 test('Test Add', e)
+
+e = executable('qa_sin',
+    'qa_sin.cu',
+    include_directories : incdir,
+    link_language : 'cpp',
+    dependencies : [cusp_dep, gtest_dep],
+    install : true)
+test('Test Sine', e)
