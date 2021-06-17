@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <complex>
-#include <cusp/sin.cuh>
+#include <cusp/cos.cuh>
 #include <cuComplex.h>
 
 using namespace cusp;
@@ -13,7 +13,7 @@ void run_test(int N)
     std::vector<T> expected_output_data(N);
     for (int i = 0; i < N; i++) {
       host_input_data[i] = (T)i;
-      expected_output_data[i] = sinf(float(i));
+      expected_output_data[i] = cosf(float(i));
     }
     std::vector<T> host_output_data(N);
   
@@ -27,7 +27,7 @@ void run_test(int N)
                N * sizeof(T), cudaMemcpyHostToDevice);
   
     //int ncopies = N * sizeof(std::complex<float>) / sizeof(T);
-    cusp::sin<T> op;
+    cusp::cos<T> op;
     /*
     int minGrid, minBlock;
     op.occupancy(&minBlock, &minGrid);
@@ -48,7 +48,7 @@ void run_test(int N)
 }
 
 
-TEST(SineKernel, Basic) {
+TEST(CosineKernel, Basic) {
   int N = 1024 * 100;
 
   run_test<int16_t>(N);
