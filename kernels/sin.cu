@@ -3,6 +3,7 @@
 #include <cuda_runtime.h>
 #include "helper_cuda.h"
 #include <cusp/sin.cuh>
+#include <math_functions.h>
 
 namespace cusp {
 

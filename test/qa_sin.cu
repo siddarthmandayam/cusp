@@ -2,6 +2,7 @@
 #include <complex>
 #include <cusp/sin.cuh>
 #include <cuComplex.h>
+#include <cmath>
 
 using namespace cusp;
 
@@ -13,7 +14,7 @@ void run_test(int N)
     std::vector<T> expected_output_data(N);
     for (int i = 0; i < N; i++) {
       host_input_data[i] = (T)i;
-      expected_output_data[i] = sinf(float(i));
+      expected_output_data[i] = (T)(sinf(float(i)));
     }
     std::vector<T> host_output_data(N);
   
