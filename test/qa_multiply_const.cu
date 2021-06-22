@@ -1,12 +1,7 @@
 #include <gtest/gtest.h>
 #include <complex>
-<<<<<<< HEAD
-#include <cusp/multiply_const.cuh>
-#include <cuComplex.h>
-=======
 #include "../include/cusp/multiply_const.cuh"
 #include <cmath>
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
 
 using namespace cusp;
 
@@ -33,24 +28,18 @@ void run_test(int N, T k)
   
     //int ncopies = N * sizeof(std::complex<float>) / sizeof(T);
     cusp::multiply_const<T> op(k);
-<<<<<<< HEAD
-    /*
-    int minGrid, minBlock;
-    op.occupancy(&minBlock, &minGrid);
-    op.set_block_and_grid(minGrid, N / minGrid);
-=======
     int minGrid, blockSize, gridSize;
     op.occupancy(&blockSize, &minGrid);
     gridSize = (N + blockSize - 1) / blockSize;
     op.set_block_and_grid(blockSize, gridSize);
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
+    op.launch({dev_input_data}, {dev_output_data}, N);
+    /*
+    int minGrid, blockSize, gridSize;
+    op.occupancy(&blockSize, &minGrid);
+    gridSize = (N + blockSize - 1) / blockSize;
+    op.set_block_and_grid(blockSize, gridSize);
     op.launch({dev_input_data}, {dev_output_data}, N);
     */
-    int minGrid, blockSize, gridSize;
-    op.occupancy(&blockSize, &minGrid);
-    gridSize = (N + blockSize - 1) / blockSize;
-    op.set_block_and_grid(blockSize, gridSize);
-    op.launch({dev_input_data}, {dev_output_data}, N);
   
     cudaDeviceSynchronize();
     cudaMemcpy(host_output_data.data(), dev_output_data,
