@@ -38,14 +38,6 @@ cudaError_t multiply_const<T>::launch(const T *in, T *out, T k, int N, int grid_
 }
 
 template <>
-<<<<<<< HEAD
-cudaError_t multiply_const<std::complex<float>>::launch(const std::complex<float> *in, std::complex<float> *out, std::complex<float> k, int N, int grid_size,
-                                 int block_size, cudaStream_t stream) {
-  if (stream) {
-    kernel_multiply_const<cuFloatComplex><<<grid_size, block_size, 0, stream>>>((const cuFloatComplex *)in, (cuFloatComplex *)out, make_cuFloatComplex(k.real(), k.imag()), N);
-  } else {
-    kernel_multiply_const<cuFloatComplex><<<grid_size, block_size>>>((const cuFloatComplex *)in, (cuFloatComplex *)out, make_cuFloatComplex(k.real(), k.imag()), N);
-=======
 cudaError_t multiply_const<std::complex<float>>::launch(const std::complex<float> *in,
                                                         std::complex<float> *out,
                                                         std::complex<float> k,
@@ -59,7 +51,6 @@ cudaError_t multiply_const<std::complex<float>>::launch(const std::complex<float
     kernel_multiply_const<<<grid_size, block_size>>>((const thrust::complex<float> *)in,
                                                      (thrust::complex<float> *) out,
                                                      (thrust::complex<float>)k, N);
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
   }
   return cudaPeekAtLastError();
 }
@@ -81,12 +72,8 @@ cudaError_t multiply_const<T>::occupancy(int *minBlock, int *minGrid) {
 template <>
 cudaError_t multiply_const<std::complex<float>>::occupancy(int *minBlock, int *minGrid) {
   return cudaOccupancyMaxPotentialBlockSize(minGrid, minBlock,
-<<<<<<< HEAD
-                                            kernel_multiply_const<cuFloatComplex>, 0, 0);
-=======
                                             kernel_multiply_const<thrust::complex<float>>,
                                             0, 0);
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
 }
 
 #define IMPLEMENT_KERNEL(T) template class multiply_const<T>;
@@ -96,10 +83,6 @@ IMPLEMENT_KERNEL(int16_t)
 IMPLEMENT_KERNEL(int32_t)
 IMPLEMENT_KERNEL(int64_t)
 IMPLEMENT_KERNEL(float)
-<<<<<<< HEAD
-//IMPLEMENT_KERNEL(cuFloatComplex)
-=======
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
 IMPLEMENT_KERNEL(std::complex<float>)
 
 } // namespace cusp
