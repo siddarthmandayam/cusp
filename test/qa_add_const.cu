@@ -25,12 +25,20 @@ void run_test(int N, T k)
     cudaMemcpy(dev_input_data, host_input_data.data(),
                N * sizeof(T), cudaMemcpyHostToDevice);
   
+    //int ncopies = N * sizeof(std::complex<float>) / sizeof(T);
     cusp::add_const<T> op(k);
     int minGrid, blockSize, gridSize;
     op.occupancy(&blockSize, &minGrid);
     gridSize = (N + blockSize - 1) / blockSize;
     op.set_block_and_grid(blockSize, gridSize);
     op.launch({dev_input_data}, {dev_output_data}, N);
+    /*
+    int minGrid, blockSize, gridSize;
+    op.occupancy(&blockSize, &minGrid);
+    gridSize = (N + blockSize - 1) / blockSize;
+    op.set_block_and_grid(blockSize, gridSize);
+    op.launch({dev_input_data}, {dev_output_data}, N);
+    */
   
     cudaDeviceSynchronize();
     cudaMemcpy(host_output_data.data(), dev_output_data,
