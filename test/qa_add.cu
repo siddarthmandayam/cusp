@@ -24,35 +24,13 @@ void run_test(int N, int num_inputs)
     cudaMemcpy(dev_input_data, host_input_data.data(),
                N * sizeof(T), cudaMemcpyHostToDevice);
   
-<<<<<<< HEAD
-=======
     
->>>>>>> 73e4e65299ec4215a7e2dfb9f42c3202f29d1ebd
     int ncopies = N * sizeof(std::complex<float>) / sizeof(T);
     cusp::add<T> op(num_inputs);
-<<<<<<< HEAD
-
-    /*
-
-    int minGrid, blockSize, gridSize;
-    op.occupancy(&blockSize, &minGrid);
-    gridSize = (ncopies + blockSize - 1) / blockSize;
-    op.set_block_and_grid(blockSize, gridSize);
-    op.launch({dev_input_data}, {dev_output_data}, ncopies);
-
-    */
-
-    
-    
-    int minGrid, minBlock;
-    op.occupancy(&minBlock, &minGrid);
-    op.set_block_and_grid(minGrid, N / minGrid);
-=======
     int minGrid, blockSize, gridSize;
     op.occupancy(&blockSize, &minGrid);
     gridSize = (N + blockSize - 1) / blockSize;
     op.set_block_and_grid(blockSize, gridSize);
->>>>>>> ce60cc2fdf5f6d68d4242873ea857a41fd64a929
 
     std::vector<const void *> input_data_pointer_vec(num_inputs);
     for (int i=0; i<num_inputs; i++)
