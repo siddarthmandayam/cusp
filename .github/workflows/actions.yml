@@ -7,8 +7,8 @@ jobs:
     - name: cuda-toolkit (Install CUDA)
       uses: Jimver/cuda-toolkit@v0.2.3
     - name: Installed Cuda Version
-      run: echo "Installed cuda version is: ${{steps.cuda-toolkit.outputs.cuda}}"
+      run: ${{steps.cuda-toolkit.outputs.cuda}}"
     - name: Cuda Install Location
-      run: echo "Cuda install location: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}"
+      run: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}"
     - name: NVCC
       run: nvcc -V
