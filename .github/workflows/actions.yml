@@ -1,7 +1,8 @@
 name: github-actions
 on: [push]
 jobs:
-  runs-on: ubuntu-latest
-  steps:
+  build:
+    runs-on: ubuntu-latest
+    steps:
     - name: cuda-toolkit
       uses: Jimver/cuda-toolkit@v0.2.3
