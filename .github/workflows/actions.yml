@@ -12,3 +12,5 @@ jobs:
       run: ${{steps.cuda-toolkit.outputs.CUDA_PATH}}
     - name: NVCC
       run: nvcc -V
+    - name: Set Up Build Directory
+      run: meson setup build
