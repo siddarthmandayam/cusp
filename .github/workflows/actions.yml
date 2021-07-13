@@ -1,0 +1,5 @@
+name: github-actions
+on: [push]
+steps:
+- name: cuda-toolkit
+  uses: Jimver/cuda-toolkit@v0.2.3
