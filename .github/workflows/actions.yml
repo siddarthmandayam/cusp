@@ -16,8 +16,5 @@ jobs:
       run: pip install ninja
     - name: Install Meson
       run: pip install meson
-    - name: Meson Build
-      uses: BSFishy/meson-build@v1.0.3
-      with:
-        action: build
-        directory: build
+    - name: List All Directories
+      run: ls
