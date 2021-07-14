@@ -5,7 +5,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Project
-      run: actions/checkout@v2
+      uses: actions/checkout@v2
     - name: cuda-toolkit (Install CUDA)
       uses: Jimver/cuda-toolkit@v0.2.3
     - name: Installed Cuda Version
