@@ -16,5 +16,10 @@ jobs:
       run: pip install ninja
     - name: Install Meson
       run: pip install meson
-    - name: Go to Build Dir
-      run: cd build
+    - name: Install cmake/gtest
+      run: sudo apt-get install cmake libgtest-dev
+    - name: Build Project
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: test
+        directory: build
