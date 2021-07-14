@@ -18,5 +18,7 @@ jobs:
       run: pip install meson
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
-    - name: Go to build dir
-      run: cd build
+    - name: Make build directory
+      run: mkdir build
+    - name: Meson Build
+      run: meson setup build
