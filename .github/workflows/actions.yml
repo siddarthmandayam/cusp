@@ -18,6 +18,8 @@ jobs:
       run: pip3 install ninja
     - name: Install Meson
       run: pip3 install meson
+    - name: Install cmake/gtest
+      run: sudo apt-get install cmake libgtest-dev
     - name: Meson Build
       uses: BSFishy/meson-build@v1.0.3
       with:
