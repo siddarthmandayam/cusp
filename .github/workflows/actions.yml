@@ -21,6 +21,4 @@ jobs:
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
     - name: Meson Build
-      uses: BSFishy/meson-build@v1.0.3
-      with:
-        action: build
+      run: meson setup build
