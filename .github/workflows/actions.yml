@@ -4,6 +4,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Checkout Project
+      run: actions/checkout@v2
     - name: cuda-toolkit (Install CUDA)
       uses: Jimver/cuda-toolkit@v0.2.3
     - name: Installed Cuda Version
@@ -13,12 +15,10 @@ jobs:
     - name: NVCC
       run: nvcc -V
     - name: Install Ninja
-      run: pip install ninja
+      run: pip3 install ninja
     - name: Install Meson
-      run: pip install meson
-    - name: Install cmake/gtest
-      run: sudo apt-get install cmake libgtest-dev
-    - name: Make build directory
-      run: mkdir build
+      run: pip3 install meson
     - name: Meson Build
-      run: meson setup build
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: build
