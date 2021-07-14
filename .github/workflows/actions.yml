@@ -20,7 +20,7 @@ jobs:
       run: pip3 install meson
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
-    - name: Meson Build
+    - name: Meson Setup Build
       run: meson setup build
-    - name: Go to Build Dir
-      run: cd build && ls
+    - name: Ninja Build
+      run: cd build && ninja
