@@ -22,3 +22,7 @@ jobs:
       run: sudo apt-get install cmake libgtest-dev
     - name: Meson Build
       run: meson setup build
+    - name: Go to Build Dir
+      run: cd build
+    - name: Ninja Build
+      run: ninja
