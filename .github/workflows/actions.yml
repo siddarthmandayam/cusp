@@ -18,8 +18,5 @@ jobs:
       run: pip install meson
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
-    - name: Build Project
-      uses: BSFishy/meson-build@v1.0.3
-      with:
-        action: test
-        directory: build
+    - name: Go to build dir
+      run: cd build
