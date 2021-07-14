@@ -23,6 +23,4 @@ jobs:
     - name: Meson Build
       run: meson setup build
     - name: Go to Build Dir
-      run: cd build
-    - name: List Directories
-      run: ls
+      run: cd build && ls
