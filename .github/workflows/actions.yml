@@ -20,7 +20,8 @@ jobs:
       run: pip3 install meson
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
-    - name: Meson Setup Build
-      run: CUDA_ROOT=/usr meson setup build
-    - name: Ninja Build
-      run: cd build && ninja
+    - name: Meson Build
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: build
+
