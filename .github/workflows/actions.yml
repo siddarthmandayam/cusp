@@ -21,6 +21,6 @@ jobs:
     - name: Install cmake/gtest
       run: sudo apt-get install cmake libgtest-dev
     - name: Meson Setup Build
-      run: meson setup build
-    - name: Ninja build
+      run: CUDA_ROOT=/usr meson setup build
+    - name: Ninja Build
       run: cd build && ninja
