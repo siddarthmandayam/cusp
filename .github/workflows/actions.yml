@@ -6,8 +6,11 @@ jobs:
     steps:
     - name: Checkout Project
       uses: actions/checkout@v2
-    - name: cuda-toolkit (Install CUDA)
-      uses: Jimver/cuda-toolkit@v0.2.3
+    - name: Install CUDA
+      env:
+        cuda: ${{ matrix.cuda }}
+      run: ./scripts/actions/install_cuda_ubuntu.sh
+      shell: bash
     - name: Installed Cuda Version
       run: ${{steps.cuda-toolkit.outputs.cuda}}
     - name: Cuda Install Location
