@@ -1,7 +1,7 @@
 # SPDX-FileCopyrightText: 2020 Josh Morman 
 #
 
-project('cusp', 'cpp', 
+project('cusp', 'cuda', 
   version : '0.0.0',
   license : 'GPLv3',
   default_options : ['cpp_std=c++14'])
