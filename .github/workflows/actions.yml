@@ -35,8 +35,6 @@ jobs:
       run: sudo apt-get install cmake libgtest-dev
     - name: Look at Environment LD_LIBRARY_PATH
       run: echo $LD_LIBRARY_PATH
-    - name: CUDA_ROOT
-      run: CUDA_ROOT=/usr/local/cuda-11.3/lib64
     - name: Meson Build
       uses: BSFishy/meson-build@v1.0.3
       with:
