@@ -1,13 +1,14 @@
 # SPDX-FileCopyrightText: 2020 Josh Morman 
 #
 
-project('cusp', 'cuda', 
+project('cusp', 'cpp', 'cuda', 
   version : '0.0.0',
-  license : 'GPLv3')
+  license : 'GPLv3',
+  default_options : ['cpp_std=c++14'])
 
 cmake = import('cmake')
 
-cc = meson.get_compiler('cuda')
+cc = meson.get_compiler('cpp')
 rt_dep = cc.find_library('rt', required : false)
 
 cuda_available = add_languages('cuda', required : true)
