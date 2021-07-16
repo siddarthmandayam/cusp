@@ -19,7 +19,7 @@ project('cusp', 'cuda',
   version: '0.1.0',
   license: 'GPLv3')
 
-subdir('deps/cusignal')
+#subdir('deps/cusignal')
 
 subdir('include/cusp')
 subdir('kernels')
