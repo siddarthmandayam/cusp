@@ -22,17 +22,11 @@ cusp_cu_files = files([
 
 incdir = ['../include']
 
-#cusp = library('cusp', 
- #   cusp_cu_files, 
-  #  include_directories : incdir, 
-   # install : true, 
-    #dependencies : [cuda_dep, cusignal_dep])
-
 cusp = library('cusp', 
     cusp_cu_files, 
     include_directories : incdir, 
     install : true, 
-    dependencies : [cuda_dep])
+    dependencies : [cuda_dep, cusignal_dep])
 
 cusp_dep = declare_dependency(include_directories : incdir,
                     link_with : cusp,
