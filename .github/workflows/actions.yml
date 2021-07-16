@@ -16,7 +16,7 @@ jobs:
     steps:
     - name: Checkout Project
       uses: actions/checkout@v2
-    - name: Install Cuda
+    - name: Install CUDA
       env:
         cuda: ${{ matrix.cuda }}
       run: ./scripts/actions/install_cuda_ubuntu.sh
