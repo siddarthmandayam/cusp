@@ -1,19 +1,23 @@
 # SPDX-FileCopyrightText: 2020 Josh Morman 
 #
 
-project('cusp', 'cpp', 'cuda', 
-  version : '0.0.0',
-  license : 'GPLv3',
-  default_options : ['cpp_std=c++14'])
+#project('cusp', 'cpp', 'cuda', 
+#  version : '0.0.0',
+ # license : 'GPLv3',
+  #default_options : ['cpp_std=c++14'])
 
-cmake = import('cmake')
+#cmake = import('cmake')
 
-cc = meson.get_compiler('cpp')
-rt_dep = cc.find_library('rt', required : false)
+#cc = meson.get_compiler('cpp')
+#rt_dep = cc.find_library('rt', required : false)
 
-cuda_available = add_languages('cuda', required : true)
-cuda_dep = dependency('cuda', version : '>=10.1', required : true)
-gtest_dep = dependency('gtest', main : true, version : '>=1.10', required : get_option('enable_testing'))
+#cuda_available = add_languages('cuda', required : true)
+#cuda_dep = dependency('cuda', version : '>=10.1', required : true)
+#gtest_dep = dependency('gtest', main : true, version : '>=1.10', required : get_option('enable_testing'))
+
+project('cusp', 'cuda',
+  version: '0.1.0',
+  license: 'GPLv3')
 
 subdir('deps/cusignal')
 
