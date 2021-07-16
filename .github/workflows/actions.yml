@@ -13,7 +13,6 @@ jobs:
     env:
       build_dir: "build"
       config: "Release"
-      build_tests: "ON"
     steps:
     - name: Checkout Project
       uses: actions/checkout@v2
@@ -36,11 +35,8 @@ jobs:
       run: sudo apt-get install cmake libgtest-dev
     - name: Look at Environment LD_LIBRARY_PATH
       run: echo $LD_LIBRARY_PATH
-    - name: Build tests
-      if: env.build_tests == 'ON' && matrix.gcc > 6
-      run: cmake --build . --target tests --verbose -j `nproc`
-      working-directory: ${{ env.build_dir }}
-    - name: Build everything else
-      run: cmake --build . --target all --verbose -j `nproc`
-      working-directory: ${{ env.build_dir }}
+    - name: Meson Build
+      uses: BSFishy/meson-build@v1.0.3
+      with:
+        action: build
 
