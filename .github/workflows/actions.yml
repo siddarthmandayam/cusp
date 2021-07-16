@@ -3,6 +3,16 @@ on: [push]
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+        - os: ubuntu-20.04
+          cuda: "11.3"
+          gcc: 10
+    env:
+      build_dir: "build"
+      config: "Release"
     steps:
     - name: Checkout Project
       uses: actions/checkout@v2
