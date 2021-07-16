@@ -35,10 +35,7 @@ jobs:
       run: sudo apt-get install cmake libgtest-dev
     - name: Look at Environment LD_LIBRARY_PATH
       run: echo $LD_LIBRARY_PATH
-    - name: Find cudart
-      run: ls /usr/bin/ld
-    - name: Meson Build
-      uses: BSFishy/meson-build@v1.0.3
-      with:
-        action: build
+    - name: Build everything else
+      working-directory: ${{ env.build_dir }}
+      run: cmake --build . --target all --verbose -j `nproc`
 
