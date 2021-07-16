@@ -24,7 +24,7 @@ cmake = import('cmake')
 cuda_dep = dependency('cuda', version : '>=10.1', required : true)
 gtest_dep = dependency('gtest', main : true, version : '>=1.10', required : get_option('enable_testing'))
 
-subdir('deps/cusignal')
+#subdir('deps/cusignal')
 
 subdir('include/cusp')
 subdir('kernels')
