@@ -41,5 +41,7 @@ jobs:
         LIBRARY_PATH: ${{env.LD_LIBRARY_PATH}}    
       run: cd build && ninja
     - name: Ninja Test
+      env:
+        LIBRARY_PATH: ${{env.LD_LIBRARY_PATH}}
       run: cd build && ninja test
 
