@@ -34,6 +34,8 @@ jobs:
       run: echo $LD_LIBRARY_PATH
     - name: Export LIBRARY_PATH
       run: export LIBRARY_PATH=$LD_LIBRARY_PATH
+    - name: Look at LIBRARY_PATH
+      run: echo $LIBRARY_PATH
     - name: Meson Setup Build
       run: meson setup build
     - name: Print Environment Variables
