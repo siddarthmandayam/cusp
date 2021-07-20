@@ -37,5 +37,7 @@ jobs:
     - name: Print Environment Variables
       run: python3 foo.py
     - name: Ninja Build
+      env:
+        LIBRARY_PATH: ${{env.LD_LIBRARY_PATH}}    
       run: cd build && ninja
 
