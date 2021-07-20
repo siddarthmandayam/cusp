@@ -32,10 +32,6 @@ jobs:
       run: sudo apt-get install cmake libgtest-dev
     - name: Look at Environment LD_LIBRARY_PATH
       run: echo $LD_LIBRARY_PATH
-    - name: Set LIBRARY_PATH
-      run: export LIBRARY_PATH="/usr/local/cuda-11.2/lib64:"
-    - name: Look at LIBRARY_PATH
-      run: echo $LIBRARY_PATH
     - name: Meson Setup Build
       run: meson setup build
     - name: Print Environment Variables
